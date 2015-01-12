@@ -2,11 +2,12 @@
 .model flat, stdcall
 .data
 .code
-licz proc x:qword, y:qword
+compute proc x:qword
 finit
 fld x
-fld y
+fld 5
 fsub
 ret
-licz endp
+compute endp
 end
+

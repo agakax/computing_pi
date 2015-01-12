@@ -1,0 +1,5 @@
+C:\Users\uczelnia\Documents\Visual Studio 2012\Projects\Computing_Pi\Pi\bin\Release\Pi.exe.config
+C:\Users\uczelnia\Documents\Visual Studio 2012\Projects\Computing_Pi\Pi\obj\Release\Pi.csprojResolveAssemblyReference.cache
+C:\Users\uczelnia\Documents\Visual Studio 2012\Projects\Computing_Pi\Pi\obj\Release\Pi.Form1.resources
+C:\Users\uczelnia\Documents\Visual Studio 2012\Projects\Computing_Pi\Pi\obj\Release\Pi.Properties.Resources.resources
+C:\Users\uczelnia\Documents\Visual Studio 2012\Projects\Computing_Pi\Pi\obj\Release\Pi.csproj.GenerateResource.Cache

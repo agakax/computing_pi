@@ -1,0 +1,3 @@
+LIBRARY "libcpp"
+EXPORTS
+   ComputePart

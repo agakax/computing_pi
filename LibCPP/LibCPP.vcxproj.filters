@@ -15,13 +15,18 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="asmlib.def">
+    <None Include="libcpp.def">
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <MASM Include="asmlib.asm">
+    <ClCompile Include="libcpp.cpp">
       <Filter>Source Files</Filter>
-    </MASM>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="libcpp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

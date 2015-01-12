@@ -15,13 +15,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="asmfunc.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <None Include="libasm.def">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="asmfunc.c">
+    <MASM Include="libasm.asm">
       <Filter>Source Files</Filter>
-    </ClCompile>
+    </MASM>
   </ItemGroup>
 </Project>
