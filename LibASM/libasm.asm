@@ -2,10 +2,10 @@
 .model flat, stdcall
 .data
 .code
-compute proc x:qword
+compute proc x:qword, y:qword
 finit
 fld x
-fld 5
+fld y
 fsub
 ret
 compute endp

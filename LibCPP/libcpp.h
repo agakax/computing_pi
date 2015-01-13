@@ -7,7 +7,7 @@
  
 extern "C"
 {
-   DECLDIR double ComputePart( double x );
+   DECLDIR  double __stdcall ComputePart( double x );
 }
 
 #endif

@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
+
 
 
 namespace Pi
@@ -28,7 +30,14 @@ namespace Pi
             for (i = 0; i < p; i++)
             {
                 x = System.Convert.ToDouble(i);
-                parts[i] = func.computePartPi(x);
+                int localnumber = i;
+                Thread tempThread = new Thread(
+                    () =>
+                        {
+                            parts[localnumber] = func.computePartPi(x);
+                        }
+                );
+                tempThread.Start();
 
             }
             for (i = 0; i < p; i++)
@@ -38,18 +47,34 @@ namespace Pi
             return pi;
         }
 
-        public double ReturnPiCpp()
+        public double ReturnPiCpp(int p, int threads)
         {
             FuncCpp func = new FuncCpp();
             Double pi = 0, x;
-            int p, i;
+            int i;
+            //foreach (int element in threads)
+
             Double[] parts;
-            p = System.Convert.ToInt32(numericUpDownP.Value);
+            object a = numericUpDownP;
             parts = new Double[p];
             for (i = 0; i < p; i++)
             {
                 x = System.Convert.ToDouble(i);
-                parts[i] = func.computePartPi(x);
+                int localnumber = i;
+                Thread tempThread = new Thread(
+                    () =>
+                    {
+                        parts[localnumber] = func.computePartPi(x);
+                    }
+                );
+                /*ThreadPool.QueueUserWorkItem(
+                    new WaitCallback(delegate(object state)
+                    { 
+parts[localnumber] = func.computePartPi(x); }), null);*/
+                //ThreadPool.QueueUserWorkItem(func.computePartPi, x);
+                tempThread.Start();
+                tempThread.Join();
+                tempThread.Abort();
 
             }
             for (i = 0; i < p; i++)
@@ -102,7 +127,6 @@ namespace Pi
         private void buttonAsm_Click(object sender, EventArgs e)
         {
             Form1 compute = new Form1();
-Thread newThread = new Thread(new ThreadStart(compute.ReturnPiAsm));
             int time = 0;
             string unit = " ms";
             double pi = compute.ReturnPiAsm() ;
@@ -122,11 +146,22 @@ Thread newThread = new Thread(new ThreadStart(compute.ReturnPiAsm));
  
         private void buttonCpp_Click(object sender, EventArgs e)
         {
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
             Form1 compute = new Form1();
-            int time = 0;
-            string unit = " ms";
-            double pi = compute.ReturnPiCpp();
-            textBoxTimeCpp.Text = time.ToString() + unit;
+            int p = System.Convert.ToInt32(numericUpDownP.Value);
+            int thread = System.Convert.ToInt32(numericUpDownThreads.Value);
+            double pi = compute.ReturnPiCpp(p, thread);
+            Console.WriteLine(numericUpDownP.Text);
+            Console.WriteLine(numericUpDownP.Value);
+            stopwatch.Stop();
+            var time = stopwatch.ElapsedMilliseconds;
+            TimeSpan t = TimeSpan.FromMilliseconds(time);
+            string formattedTime = string.Format("{0:D2}m {1:D2}s {2:D2}ms",
+                                    t.Minutes,
+                                    t.Seconds,
+                                    t.Milliseconds);
+            textBoxTimeCpp.Text = time.ToString();
             richTextBoxPi.Text = pi.ToString();
         }
  

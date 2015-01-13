@@ -11,6 +11,8 @@ namespace Pi
     {
         [DllImport("LibCPP.dll", CallingConvention = CallingConvention.StdCall)]
         private static extern double ComputePart(double x);
+        //Cdecl
+        //$(SolutionDir)$(Configuration)\
 
         public double computePartPi(double x)
         {
