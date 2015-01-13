@@ -7,3 +7,12 @@ C:\Users\uczelnia\Documents\Visual Studio 2012\Projects\Computing_Pi\Pi\obj\Debu
 C:\Users\uczelnia\Documents\Visual Studio 2012\Projects\Computing_Pi\Pi\obj\Debug\Pi.exe
 C:\Users\uczelnia\Documents\Visual Studio 2012\Projects\Computing_Pi\Pi\obj\Debug\Pi.pdb
 C:\Users\uczelnia\Documents\Visual Studio 2012\Projects\Computing_Pi\Pi\obj\Debug\Pi.csprojResolveAssemblyReference.cache
+D:\GIT\computing_pi\Pi\bin\Debug\Pi.exe.config
+D:\GIT\computing_pi\Pi\bin\Debug\Pi.exe
+D:\GIT\computing_pi\Pi\bin\Debug\Pi.pdb
+D:\GIT\computing_pi\Pi\obj\Debug\Pi.csprojResolveAssemblyReference.cache
+D:\GIT\computing_pi\Pi\obj\Debug\Pi.Form1.resources
+D:\GIT\computing_pi\Pi\obj\Debug\Pi.Properties.Resources.resources
+D:\GIT\computing_pi\Pi\obj\Debug\Pi.csproj.GenerateResource.Cache
+D:\GIT\computing_pi\Pi\obj\Debug\Pi.exe
+D:\GIT\computing_pi\Pi\obj\Debug\Pi.pdb

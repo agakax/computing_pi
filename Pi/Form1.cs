@@ -50,31 +50,32 @@ namespace Pi
         public double ReturnPiCpp(int p, int threads)
         {
             FuncCpp func = new FuncCpp();
+            p = p + 1;
             Double pi = 0, x;
             int i;
             //foreach (int element in threads)
-
+            Thread[] freds;
             Double[] parts;
             object a = numericUpDownP;
+            freds = new Thread[threads];
             parts = new Double[p];
             for (i = 0; i < p; i++)
             {
-                x = System.Convert.ToDouble(i);
+                var eventDone = new ManualResetEvent(false);
                 int localnumber = i;
-                Thread tempThread = new Thread(
-                    () =>
-                    {
-                        parts[localnumber] = func.computePartPi(x);
-                    }
-                );
-                /*ThreadPool.QueueUserWorkItem(
-                    new WaitCallback(delegate(object state)
-                    { 
-parts[localnumber] = func.computePartPi(x); }), null);*/
-                //ThreadPool.QueueUserWorkItem(func.computePartPi, x);
-                tempThread.Start();
-                tempThread.Join();
-                tempThread.Abort();
+                x = System.Convert.ToDouble(i);
+                var fredki = freds.Where(item => item == null);
+                Thread fred = fredki.First();
+                fred = new Thread(() =>
+                {
+                    parts[localnumber] = func.computePartPi(x);
+                    eventDone.Set();
+                    fred.Abort();
+                    fred = null;
+                });
+                fred.Start();
+                fred.Join();
+                eventDone.WaitOne();
 
             }
             for (i = 0; i < p; i++)
